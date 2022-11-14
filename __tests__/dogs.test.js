@@ -39,4 +39,17 @@ describe('dogs routes', () => {
       ]
     `);
   });
+  it('should GET dogs/1', async () => {
+    const res = await request(app).get('/dogs/1');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      age: 4,
+      breed: 'Mutt',
+      id: '1',
+      name: 'Marvin',
+    });
+  });
+  afterAll(() => {
+    pool.end();
+  });
 });
