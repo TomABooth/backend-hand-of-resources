@@ -52,4 +52,21 @@ describe('dogs routes', () => {
   afterAll(() => {
     pool.end();
   });
+  it('it should /POST a new dog to the list', async () => {
+    const newDog = {
+      name: 'Spike',
+      age: 5,
+      breed: 'Mutt',
+    };
+    const res = await request(app).post('/dogs').send(newDog);
+    expect(res.status).toBe(200);
+    expect(res.body).toMatchInlineSnapshot(`
+      Object {
+        "age": 5,
+        "breed": "Mutt",
+        "id": "5",
+        "name": "Spike",
+      }
+    `);
+  });
 });
