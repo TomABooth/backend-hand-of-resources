@@ -69,7 +69,7 @@ describe('dogs routes', () => {
       }
     `);
   });
-  it('should PUT new data into dog with id #1', async () => {
+  it('should PUT new data into dog where ID #1', async () => {
     const res = await request(app).put('/dogs/1').send({ name: 'Murphy' });
     expect(res.status).toBe(200);
     expect(res.body.name).toBe('Murphy');
