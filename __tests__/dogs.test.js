@@ -52,7 +52,7 @@ describe('dogs routes', () => {
   afterAll(() => {
     pool.end();
   });
-  it('it should /POST a new dog to the list', async () => {
+  it('should /POST a new dog to the list', async () => {
     const newDog = {
       name: 'Spike',
       age: 5,
@@ -68,5 +68,10 @@ describe('dogs routes', () => {
         "name": "Spike",
       }
     `);
+  });
+  it('should PUT new data into dog with id #1', async () => {
+    const res = await request(app).put('/dogs/1').send({ name: 'Murphy' });
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe('Murphy');
   });
 });
