@@ -74,4 +74,8 @@ describe('dogs routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.name).toBe('Murphy');
   });
+  it('GET /dogs/abc should return 404', async () => {
+    const res = await request(app).get('/dogs/123');
+    expect(res.status).toBe(404);
+  });
 });
