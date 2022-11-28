@@ -22,8 +22,8 @@ VALUES
 CREATE TABLE games (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR,
-    console VARCHAR.
-    genre VARCHAR,
+    console VARCHAR,
+    genre VARCHAR
 );
 
 INSERT INTO games (
