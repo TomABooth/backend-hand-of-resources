@@ -69,7 +69,7 @@ describe('games routes', () => {
       }
     `);
   });
-  it('should PUT new data into game with id #1', async () => {
+  it('should PUT new data into game where ID #1', async () => {
     const res = await request(app).put('/games/1').send({ name: 'OOT' });
     expect(res.status).toBe(200);
     expect(res.body.name).toBe('OOT');
