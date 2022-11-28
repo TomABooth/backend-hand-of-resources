@@ -52,4 +52,21 @@ describe('games routes', () => {
   afterAll(() => {
     pool.end();
   });
+  it('it should /POST a new game to the list', async () => {
+    const newGame = {
+      name: 'Call of Duty',
+      genre: 'FPS',
+      console: 'Multi',
+    };
+    const res = await request(app).post('/games').send(newGame);
+    expect(res.status).toBe(200);
+    expect(res.body).toMatchInlineSnapshot(`
+      Object {
+        "genre": "FPS",
+        "console": "Multi",
+        "id": "5",
+        "name": "Call of Duty",
+      }
+    `);
+  });
 });
