@@ -78,4 +78,10 @@ describe('games routes', () => {
     const res = await request(app).get('/games/123');
     expect(res.status).toBe(404);
   });
+  it('DELETE /games/1 should delete #1', async () => {
+    const res = await request(app).delete('/games/1');
+    expect(res.status).toBe(200);
+    const getRes = await request(app).get('/games/1');
+    expect(getRes.status).toBe(404);
+  });
 });
