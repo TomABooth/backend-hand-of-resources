@@ -74,4 +74,8 @@ describe('games routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.name).toBe('OOT');
   });
+  it('GET /games/abc should return 404', async () => {
+    const res = await request(app).get('/games/123');
+    expect(res.status).toBe(404);
+  });
 });
