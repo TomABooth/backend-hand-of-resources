@@ -78,10 +78,10 @@ describe('dogs routes', () => {
     const res = await request(app).get('/dogs/123');
     expect(res.status).toBe(404);
   });
-  it('DELETE /conventions/1 should delete #1', async () => {
-    const res = await request(app).delete('/conventions/1');
+  it('DELETE /dogs/1 should delete #1', async () => {
+    const res = await request(app).delete('/dogs/1');
     expect(res.status).toBe(200);
-    const getRes = await request(app).get('/conventions/1');
+    const getRes = await request(app).get('/dogs/1');
     expect(getRes.status).toBe(404);
   });
 });
