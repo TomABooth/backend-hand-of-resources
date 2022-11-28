@@ -39,4 +39,17 @@ describe('games routes', () => {
       ]
     `);
   });
+  it('should GET games/1', async () => {
+    const res = await request(app).get('/games/1');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      console: 'Nintendo 64',
+      genre: 'RPG',
+      id: '1',
+      name: 'Ocarina of Time',
+    });
+  });
+  afterAll(() => {
+    pool.end();
+  });
 });
