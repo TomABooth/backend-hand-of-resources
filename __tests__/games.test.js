@@ -52,7 +52,7 @@ describe('games routes', () => {
   afterAll(() => {
     pool.end();
   });
-  it('it should /POST a new game to the list', async () => {
+  it('should /POST a new game to the list', async () => {
     const newGame = {
       name: 'Call of Duty',
       console: 'Multi',
@@ -68,5 +68,10 @@ describe('games routes', () => {
         "name": "Call of Duty",
       }
     `);
+  });
+  it('should PUT new data into game with id #1', async () => {
+    const res = await request(app).put('/games/1').send({ name: 'OOT' });
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe('OOT');
   });
 });
