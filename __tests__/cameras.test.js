@@ -52,4 +52,14 @@ describe('cameras routes', () => {
   afterAll(() => {
     pool.end();
   });
+  it('it should /POST a new camera to the list', async () => {
+    const newCamera = {
+      brand: 'Canon',
+      megapixels: '24',
+      model: 'R6',
+    };
+    const res = await request(app).post('/cameras').send(newCamera);
+    expect(res.status).toBe(200);
+    expect(res.body).toMatchInlineSnapshot();
+  });
 });
