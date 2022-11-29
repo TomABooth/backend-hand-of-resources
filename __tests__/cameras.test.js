@@ -10,6 +10,33 @@ describe('cameras routes', () => {
   it('should GET list of cameras', async () => {
     const res = await request(app).get('/cameras');
     expect(res.status).toBe(200);
-    expect(res.body).toMatchInlineSnapshot();
+    expect(res.body).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "brand": "Sony",
+          "id": "1",
+          "megapixels": 50,
+          "model": "A1",
+        },
+        Object {
+          "brand": "Sony",
+          "id": "2",
+          "megapixels": 61,
+          "model": "A7RIV",
+        },
+        Object {
+          "brand": "Canon",
+          "id": "3",
+          "megapixels": 45,
+          "model": "R5",
+        },
+        Object {
+          "brand": "Canon",
+          "id": "4",
+          "megapixels": 24,
+          "model": "R3",
+        },
+      ]
+    `);
   });
 });
