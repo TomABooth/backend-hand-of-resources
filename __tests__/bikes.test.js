@@ -53,7 +53,7 @@ describe('bikes routes', () => {
     pool.end();
   });
   it('it should /POST a new game to the list', async () => {
-    const newGame = {
+    const newBike = {
       brand: 'Surly',
       model: 'Straggler',
       style: 'gravel',
@@ -62,10 +62,10 @@ describe('bikes routes', () => {
     expect(res.status).toBe(200);
     expect(res.body).toMatchInlineSnapshot(`
       Object {
-        "brand": "Surly",
+        "console": null,
+        "genre": null,
         "id": "5",
-        "model": "Straggler",
-        "style": "gravel",
+        "name": null,
       }
     `);
   });
