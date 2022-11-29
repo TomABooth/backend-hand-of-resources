@@ -52,21 +52,26 @@ describe('bikes routes', () => {
   afterAll(() => {
     pool.end();
   });
-  it('it should /POST a new game to the list', async () => {
+  it('it should /POST a new bike to the list', async () => {
     const newBike = {
       brand: 'Surly',
       model: 'Straggler',
       style: 'gravel',
     };
-    const res = await request(app).post('/games').send(newBike);
+    const res = await request(app).post('/bikes').send(newBike);
     expect(res.status).toBe(200);
     expect(res.body).toMatchInlineSnapshot(`
       Object {
-        "console": null,
-        "genre": null,
+        "brand": "Surly",
         "id": "5",
-        "name": null,
+        "model": "Straggler",
+        "style": "gravel",
       }
     `);
+  });
+  it('should PUT new data into bike with id #1', async () => {
+    const res = await request(app).put('/bikes/1').send({ style: 'race' });
+    expect(res.status).toBe(200);
+    expect(res.body.style).toBe('race');
   });
 });
