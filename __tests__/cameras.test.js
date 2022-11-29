@@ -45,7 +45,7 @@ describe('cameras routes', () => {
     expect(res.body).toEqual({
       brand: 'Sony',
       id: '1',
-      megapixels: 24,
+      megapixels: 50,
       model: 'A1',
     });
   });
