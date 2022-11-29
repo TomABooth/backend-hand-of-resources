@@ -74,4 +74,8 @@ describe('bikes routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.style).toBe('race');
   });
+  it('GET /bikes/abc should return 404', async () => {
+    const res = await request(app).get('/bikes/123');
+    expect(res.status).toBe(404);
+  });
 });
