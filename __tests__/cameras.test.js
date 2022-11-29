@@ -60,6 +60,13 @@ describe('cameras routes', () => {
     };
     const res = await request(app).post('/cameras').send(newCamera);
     expect(res.status).toBe(200);
-    expect(res.body).toMatchInlineSnapshot();
+    expect(res.body).toMatchInlineSnapshot(`
+      Object {
+        "brand": "Canon",
+        "id": "5",
+        "megapixels": 24,
+        "model": "R6",
+      }
+    `);
   });
 });
