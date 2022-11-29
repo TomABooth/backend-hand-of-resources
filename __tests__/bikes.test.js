@@ -3,7 +3,7 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
-describe('games routes', () => {
+describe('bikes routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
@@ -13,29 +13,30 @@ describe('games routes', () => {
     expect(res.body).toMatchInlineSnapshot(`
       Array [
         Object {
-          "id": "1",
           "brand": "Giant",
+          "id": "1",
           "model": "Revolt",
           "style": "gravel",
         },
         Object {
-            "id": "2",
-            "brand": "All City",
+          "brand": "All City",
+          "id": "2",
           "model": "Space Horse",
           "style": "touring",
         },
         Object {
-            "id": "3",
-            "brand": "Cannondale",
-            "model": "Super Six Evo",
-            "style": "racing",
+          "brand": "Cannondale",
+          "id": "3",
+          "model": "Super Six Evo",
+          "style": "racing",
         },
         Object {
-            "id": "4",
-            "brand": "Salsa",
-            "model": "Beargrease",
-            "style": "tat",
+          "brand": "Salsa",
+          "id": "4",
+          "model": "Beargrease",
+          "style": "fat",
         },
       ]
     `);
   });
+});
