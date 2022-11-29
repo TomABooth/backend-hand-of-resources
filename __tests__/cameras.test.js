@@ -69,4 +69,9 @@ describe('cameras routes', () => {
       }
     `);
   });
+  it('should PUT new data into cameras with id #1', async () => {
+    const res = await request(app).put('/cameras/1').send({ model: 'A1II' });
+    expect(res.status).toBe(200);
+    expect(res.body.model).toBe('A1II');
+  });
 });
