@@ -39,4 +39,17 @@ describe('cameras routes', () => {
       ]
     `);
   });
+  it('should GET cameras/1', async () => {
+    const res = await request(app).get('/cameras/1');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      brand: 'Sony',
+      id: '1',
+      megapixels: 24,
+      model: 'A1',
+    });
+  });
+  afterAll(() => {
+    pool.end();
+  });
 });
