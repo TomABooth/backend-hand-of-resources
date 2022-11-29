@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS dogs;
 DROP TABLE IF EXISTS games;
+DROP TABLE IF EXISTS bikes;
 
 CREATE TABLE dogs (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -34,3 +35,19 @@ VALUES
 ('Breath of the Wild', 'Switch', 'Open-World'),
 ('God of War 4', 'PS4', 'Action'),
 ('God of War: Ragnarok', 'PS5', 'Action');
+
+CREATE TABLE bikes (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    brand VARCHAR,
+    model VARCHAR,
+    style VARCHAR
+);
+
+INSERT INTO bikes (
+    brand, model, style
+)
+VALUES
+('Giant', 'Revolt', 'gravel'),
+('All City', 'Space Horse', 'touring'),
+('Cannondale', 'Super Six Evo', 'racing'),
+('Salsa', 'Beargrease', 'fat');
