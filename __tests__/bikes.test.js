@@ -39,4 +39,17 @@ describe('bikes routes', () => {
       ]
     `);
   });
+  it('should GET bikes/1', async () => {
+    const res = await request(app).get('/bikes/1');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      brand: 'Giant',
+      id: '1',
+      model: 'Revolt',
+      style: 'gravel',
+    });
+  });
+  afterAll(() => {
+    pool.end();
+  });
 });
