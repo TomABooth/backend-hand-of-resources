@@ -78,4 +78,10 @@ describe('cameras routes', () => {
     const res = await request(app).get('/cameras/123');
     expect(res.status).toBe(404);
   });
+  it('DELETE /cameras/1 should delete #1', async () => {
+    const res = await request(app).delete('/cameras/1');
+    expect(res.status).toBe(200);
+    const getRes = await request(app).get('/cameras/1');
+    expect(getRes.status).toBe(404);
+  });
 });
