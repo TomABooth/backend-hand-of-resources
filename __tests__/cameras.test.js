@@ -74,4 +74,8 @@ describe('cameras routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.model).toBe('A1II');
   });
+  it('GET /cameras/abc should return 404', async () => {
+    const res = await request(app).get('/cameras/123');
+    expect(res.status).toBe(404);
+  });
 });
