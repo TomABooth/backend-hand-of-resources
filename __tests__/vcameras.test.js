@@ -7,7 +7,7 @@ describe('vcameras routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it.only('should GET list of vcameras', async () => {
+  it('should GET list of vcameras', async () => {
     const res = await request(app).get('/vcameras');
     expect(res.status).toBe(200);
     expect(res.body).toMatchInlineSnapshot(`
