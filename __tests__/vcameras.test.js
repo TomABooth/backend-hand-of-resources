@@ -39,4 +39,17 @@ describe('vcameras routes', () => {
       ]
     `);
   });
+  it('should GET vcameras/1', async () => {
+    const res = await request(app).get('/vcameras/1');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      brand: 'Sony',
+      id: '1',
+      resolution: '4K',
+      model: 'FX3',
+    });
+  });
+  afterAll(() => {
+    pool.end();
+  });
 });
