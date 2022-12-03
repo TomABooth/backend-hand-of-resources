@@ -52,4 +52,14 @@ describe('vcameras routes', () => {
   afterAll(() => {
     pool.end();
   });
+  it('it should /POST a new vcamera to the list', async () => {
+    const newVcamera = {
+      brand: 'Canon',
+      resolution: '8K',
+      model: 'C70',
+    };
+    const res = await request(app).post('/vcameras').send(newVcamera);
+    expect(res.status).toBe(200);
+    expect(res.body).toMatchInlineSnapshot();
+  });
 });
