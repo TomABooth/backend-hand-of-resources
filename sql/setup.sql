@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS dogs;
 DROP TABLE IF EXISTS games;
 DROP TABLE IF EXISTS bikes;
 DROP TABLE IF EXISTS cameras;
+DROP TABLE IF EXISTS vcameras;
 
 CREATE TABLE dogs (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -68,3 +69,19 @@ VALUES
 ('Sony', 'A7RIV', 61),
 ('Canon', 'R5', 45),
 ('Canon', 'R3', 24);
+
+CREATE TABLE vcameras (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    brand VARCHAR,
+    model VARCHAR,
+    resolution VARCHAR
+);  
+
+INSERT INTO vcameras (
+    brand, model, resolution
+)
+VALUES
+('Sony', 'FX3', '4K'),
+('Sony', 'FX6', '6K'),
+('RED', 'KOMODO', '6K'),
+('Canon', 'R5C', '8K');
