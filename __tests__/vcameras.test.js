@@ -74,4 +74,8 @@ describe('vcameras routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.model).toBe('FX30');
   });
+  it('GET /vcameras/abc should return 404', async () => {
+    const res = await request(app).get('/vcameras/123');
+    expect(res.status).toBe(404);
+  });
 });
