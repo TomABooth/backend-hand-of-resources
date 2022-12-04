@@ -1,0 +1,87 @@
+const pool = require('../lib/utils/pool');
+const setup = require('../data/setup');
+const request = require('supertest');
+const app = require('../lib/app');
+
+describe('games routes', () => {
+  beforeEach(() => {
+    return setup(pool);
+  });
+  it('should GET list of games', async () => {
+    const res = await request(app).get('/games');
+    expect(res.status).toBe(200);
+    expect(res.body).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "console": "Nintendo 64",
+          "genre": "RPG",
+          "id": "1",
+          "name": "Ocarina of Time",
+        },
+        Object {
+          "console": "Switch",
+          "genre": "Open-World",
+          "id": "2",
+          "name": "Breath of the Wild",
+        },
+        Object {
+          "console": "PS4",
+          "genre": "Action",
+          "id": "3",
+          "name": "God of War 4",
+        },
+        Object {
+          "console": "PS5",
+          "genre": "Action",
+          "id": "4",
+          "name": "God of War: Ragnarok",
+        },
+      ]
+    `);
+  });
+  it('should GET games/1', async () => {
+    const res = await request(app).get('/games/1');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      console: 'Nintendo 64',
+      genre: 'RPG',
+      id: '1',
+      name: 'Ocarina of Time',
+    });
+  });
+  afterAll(() => {
+    pool.end();
+  });
+  it('should /POST a new game to the list', async () => {
+    const newGame = {
+      name: 'Call of Duty',
+      console: 'Multi',
+      genre: 'FPS',
+    };
+    const res = await request(app).post('/games').send(newGame);
+    expect(res.status).toBe(200);
+    expect(res.body).toMatchInlineSnapshot(`
+      Object {
+        "console": "Multi",
+        "genre": "FPS",
+        "id": "5",
+        "name": "Call of Duty",
+      }
+    `);
+  });
+  it('should PUT new data into game where ID #1', async () => {
+    const res = await request(app).put('/games/1').send({ name: 'OOT' });
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe('OOT');
+  });
+  it('GET /games/abc should return 404', async () => {
+    const res = await request(app).get('/games/123');
+    expect(res.status).toBe(404);
+  });
+  it('DELETE /games/1 should delete #1', async () => {
+    const res = await request(app).delete('/games/1');
+    expect(res.status).toBe(200);
+    const getRes = await request(app).get('/games/1');
+    expect(getRes.status).toBe(404);
+  });
+});

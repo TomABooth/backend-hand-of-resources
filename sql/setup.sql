@@ -1,2 +1,87 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
+DROP TABLE IF EXISTS dogs;
+DROP TABLE IF EXISTS games;
+DROP TABLE IF EXISTS bikes;
+DROP TABLE IF EXISTS cameras;
+DROP TABLE IF EXISTS vcameras;
+
+CREATE TABLE dogs (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR,
+    age  INT,
+    breed VARCHAR
+);
+
+INSERT INTO dogs (
+    name, age, breed
+)
+VALUES
+('Marvin', 4, 'Mutt'),
+('Max', 14, 'Lab'),
+('Ruby', 16, 'Schnauzer'),
+('Bently', 7, 'Kelpie');
+
+CREATE TABLE games (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR,
+    console VARCHAR,
+    genre VARCHAR
+);
+
+INSERT INTO games (
+    name, console, genre
+)
+VALUES
+('Ocarina of Time', 'Nintendo 64', 'RPG'),
+('Breath of the Wild', 'Switch', 'Open-World'),
+('God of War 4', 'PS4', 'Action'),
+('God of War: Ragnarok', 'PS5', 'Action');
+
+CREATE TABLE bikes (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    brand VARCHAR,
+    model VARCHAR,
+    style VARCHAR
+);
+
+INSERT INTO bikes (
+    brand, model, style
+)
+VALUES
+('Giant', 'Revolt', 'gravel'),
+('All City', 'Space Horse', 'touring'),
+('Cannondale', 'Super Six Evo', 'racing'),
+('Salsa', 'Beargrease', 'fat');
+
+CREATE TABLE cameras (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    brand VARCHAR,
+    model VARCHAR,
+    megapixels INT
+);
+
+INSERT INTO cameras (
+    brand, model, megapixels
+)
+VALUES
+('Sony', 'A1', 50.1),
+('Sony', 'A7RIV', 61),
+('Canon', 'R5', 45),
+('Canon', 'R3', 24);
+
+CREATE TABLE vcameras (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    brand VARCHAR,
+    model VARCHAR,
+    resolution VARCHAR
+);  
+
+INSERT INTO vcameras (
+    brand, model, resolution
+)
+VALUES
+('Sony', 'FX3', '4K'),
+('Sony', 'FX6', '6K'),
+('RED', 'KOMODO', '6K'),
+('Canon', 'R5C', '8K');
