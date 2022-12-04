@@ -60,6 +60,13 @@ describe('vcameras routes', () => {
     };
     const res = await request(app).post('/vcameras').send(newVcamera);
     expect(res.status).toBe(200);
-    expect(res.body).toMatchInlineSnapshot();
+    expect(res.body).toMatchInlineSnapshot(`
+      Object {
+        "brand": "Canon",
+        "id": "5",
+        "model": "C70",
+        "resolution": "8K",
+      }
+    `);
   });
 });
