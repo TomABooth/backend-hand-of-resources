@@ -69,4 +69,9 @@ describe('vcameras routes', () => {
       }
     `);
   });
+  it('should PUT new data into vcameras with id #1', async () => {
+    const res = await request(app).put('/vcameras/1').send({ model: 'FX30' });
+    expect(res.status).toBe(200);
+    expect(res.body.model).toBe('FX30');
+  });
 });
